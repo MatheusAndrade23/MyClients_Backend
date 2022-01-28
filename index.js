@@ -39,7 +39,7 @@ mongoose.connect(process.env.DB_CONFIG, {
 
 // rotas da API
 
-app.post('/clients', async (req, res) =>{
+app.post(`/${process.env.URL}`, async (req, res) =>{
 
     // req.body
     const {name, total, contas, contato} = req.body
@@ -66,7 +66,7 @@ app.post('/clients', async (req, res) =>{
 
 // READ
 
-app.get('/clients', async (req, res) =>{
+app.get(`/${process.env.URL}`, async (req, res) =>{
 
     try {
         
@@ -80,7 +80,7 @@ app.get('/clients', async (req, res) =>{
 
 // Mostrar Individual
 
-app.get('/clients/:id', async (req, res)=>{
+app.get(`/${process.env.URL}/:id`, async (req, res)=>{
 
     //extrair o dado da req
 
@@ -98,7 +98,7 @@ app.get('/clients/:id', async (req, res)=>{
 
 // UPDATE PUT/PATCH
 
-app.patch('/clients/:id', async (req, res)=>{
+app.patch(`/${process.env.URL}/:id`, async (req, res)=>{
 
     const id = req.params.id
 
@@ -125,7 +125,7 @@ app.patch('/clients/:id', async (req, res)=>{
 
 // DELETE
 
-app.delete('/clients/:id', async (req, res)=>{
+app.delete(`/${process.env.URL}/:id`, async (req, res)=>{
 
     const id = req.params.id
 
