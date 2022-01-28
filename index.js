@@ -64,6 +64,13 @@ app.post('/clients', async (req, res) =>{
     }
 })
 
+// READ
+
+app.get('clients', (req, res) =>{
+
+    
+})
+
 // rota inicial
 
 app.get('/', (req,res) =>{
