@@ -78,6 +78,69 @@ app.get('/clients', async (req, res) =>{
     }
 })
 
+// Mostrar Individual
+
+app.get('/clients/:id', async (req, res)=>{
+
+    //extrair o dado da req
+
+    const id = req.params.id
+
+    try {
+
+        const client = await Client.findOne({_id: id})
+        res.status(200).json(client)
+        
+    } catch (error) {
+        res.status(500).json({Erro: error});
+    }
+})
+
+// UPDATE PUT/PATCH
+
+app.patch('/clients/:id', async (req, res)=>{
+
+    const id = req.params.id
+
+    const {name, total, contas, contato} = req.body
+
+    const client = {
+
+        name,
+        total,
+        contas,
+        contato
+    }
+
+    const ClientUpdated = await Client.updateOne({_id: id}, client)
+
+    res.status(200).json(client);
+
+    try {
+        
+    } catch (error) {
+        res.status(500).json({Erro: error});
+    }
+})
+
+// DELETE
+
+app.delete('/clients/:id', async (req, res)=>{
+
+    const id = req.params.id
+
+    const client = await Client.findOne({_id: id})
+
+    try {
+        
+        await Client.deleteOne({_id: id})
+        res.status(200).json({Message: 'Deu bom'})
+
+    } catch (error) {
+        res.status(500).json({Erro: error});
+    }
+})
+
 // rota inicial
 
 app.get('/', (req,res) =>{
