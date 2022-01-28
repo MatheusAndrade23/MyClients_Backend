@@ -66,9 +66,16 @@ app.post('/clients', async (req, res) =>{
 
 // READ
 
-app.get('clients', (req, res) =>{
+app.get('/clients', async (req, res) =>{
 
-    
+    try {
+        
+        const Clients = await Client.find()
+        res.status(200).json(Clients)
+
+    } catch (error) {
+        res.status(500).json({Erro: error});
+    }
 })
 
 // rota inicial
