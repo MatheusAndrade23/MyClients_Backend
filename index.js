@@ -112,11 +112,11 @@ app.patch(`/${process.env.URL}/:id`, async (req, res)=>{
         contato
     }
 
-    const ClientUpdated = await Client.updateOne({_id: id}, client)
-
-    res.status(200).json(client);
-
     try {
+
+        const ClientUpdated = await Client.updateOne({_id: id}, client)
+
+        res.status(200).json(client);
         
     } catch (error) {
         res.status(500).json({Erro: error});
