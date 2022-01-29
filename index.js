@@ -146,7 +146,7 @@ app.delete(`/${process.env.URL}/:id`, async (req, res)=>{
 app.get('/', (req,res) =>{
 
     // mostrar req
-    res.json({Message: Essa é a API do Projeto MyClients! Acesse github.com/MatheusAndrade23/MyClients para mais informações! })
+    res.json({message: Essa é a API do Projeto MyClients})
 })
 
 // entregar uma porta
